@@ -13,84 +13,139 @@ public class GDAL : ModuleRules
 		//Add include directory
 		PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "include"));
 
-		//add shared libs.
-		var libs = Directory.GetFiles(Path.Combine(ModuleDirectory, "lib"), "*" + ".lib", SearchOption.AllDirectories);
-		foreach (string lib in libs)
-		{
-			PublicAdditionalLibraries.Add(lib);
-		}
-
-		//add dlls
-		var dlls = new List<string>(Directory.GetFiles(Path.Combine(ModuleDirectory, "lib"), "*" + ".dll"));
-		dlls.AddRange(Directory.GetFiles(Path.Combine(ModuleDirectory, "lib", "gdalplugins"), "*" + ".dll"));
-		dlls.AddRange(Directory.GetFiles(Path.Combine(ModuleDirectory, "bin"), "*" + ".dll"));
-        string stagingDir = Path.Combine("$(ProjectDir)", "Binaries", "Data", "GDAL");
-		string binaryStagingDir = Path.Combine("$(ProjectDir)", "Binaries", "Win64");
-
-        foreach (string dll in dlls)
-		{
-			//Console.WriteLine(dll);
-			RuntimeDependencies.Add(Path.Combine(binaryStagingDir, Path.GetFileName(dll)), dll, StagedFileType.NonUFS);
-		}
-
-		var datadirs = Directory.GetDirectories(Path.Combine(ModuleDirectory, "share"), "*");
-
-		if (!Directory.Exists(stagingDir))
-		{
-			Directory.CreateDirectory(stagingDir);
-		}
-		foreach (string dir in datadirs)
-		{
-			string StagedDataDir = Path.Combine(stagingDir, Path.GetFileName(dir));
-			System.Console.WriteLine(StagedDataDir);
-
-			if (!Directory.Exists(StagedDataDir))
+		if (Target.Platform == UnrealTargetPlatform.Win64) {
+			//add shared libs.
+			var libs = Directory.GetFiles(Path.Combine(ModuleDirectory, "lib"), "*" + ".lib", SearchOption.AllDirectories);
+			foreach (string lib in libs)
 			{
-				Directory.CreateDirectory(StagedDataDir);
+				PublicAdditionalLibraries.Add(lib);
 			}
-			foreach (string file in Directory.GetFiles(dir, "*"))
+
+			//add dlls
+			var dlls = new List<string>(Directory.GetFiles(Path.Combine(ModuleDirectory, "lib"), "*" + ".dll"));
+			dlls.AddRange(Directory.GetFiles(Path.Combine(ModuleDirectory, "lib", "gdalplugins"), "*" + ".dll"));
+			dlls.AddRange(Directory.GetFiles(Path.Combine(ModuleDirectory, "bin"), "*" + ".dll"));
+			string stagingDir = Path.Combine("$(ProjectDir)", "Binaries", "Data", "GDAL");
+			string binaryStagingDir = Path.Combine("$(ProjectDir)", "Binaries", "Win64");
+
+			foreach (string dll in dlls)
 			{
-                RuntimeDependencies.Add(Path.Combine(StagedDataDir, Path.GetFileName(file)), file, StagedFileType.NonUFS);
+				//Console.WriteLine(dll);
+				RuntimeDependencies.Add(Path.Combine(binaryStagingDir, Path.GetFileName(dll)), dll, StagedFileType.NonUFS);
+			}
 
-            }
+			var datadirs = Directory.GetDirectories(Path.Combine(ModuleDirectory, "share"), "*");
+
+			if (!Directory.Exists(stagingDir))
+			{
+				Directory.CreateDirectory(stagingDir);
+			}
+			foreach (string dir in datadirs)
+			{
+				string StagedDataDir = Path.Combine(stagingDir, Path.GetFileName(dir));
+				System.Console.WriteLine(StagedDataDir);
+
+				if (!Directory.Exists(StagedDataDir))
+				{
+					Directory.CreateDirectory(StagedDataDir);
+				}
+				foreach (string file in Directory.GetFiles(dir, "*"))
+				{
+					RuntimeDependencies.Add(Path.Combine(StagedDataDir, Path.GetFileName(file)), file, StagedFileType.NonUFS);
+
+				}
 
 
-        }
+			}
 
 
-		//stage dependencies
-		PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "dependencies", "include"));
+			//stage dependencies
+			PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "dependencies", "include"));
 
-		var dependencydlls = Directory.GetFiles(Path.Combine(ModuleDirectory, "dependencies"), "*.dll");
-		var dependencylibs = Directory.GetFiles(Path.Combine(ModuleDirectory, "dependencies"), "*.lib");
+			var dependencydlls = Directory.GetFiles(Path.Combine(ModuleDirectory, "dependencies"), "*.dll");
+			var dependencylibs = Directory.GetFiles(Path.Combine(ModuleDirectory, "dependencies"), "*.lib");
 
-        foreach (var  dll in dependencydlls)
-		{
-			RuntimeDependencies.Add(Path.Combine(binaryStagingDir, Path.GetFileName(dll)), dll, StagedFileType.NonUFS);
+			foreach (var  dll in dependencydlls)
+			{
+				RuntimeDependencies.Add(Path.Combine(binaryStagingDir, Path.GetFileName(dll)), dll, StagedFileType.NonUFS);
+			}
+			foreach (var  lib in dependencylibs)
+			{
+				PublicAdditionalLibraries.Add(lib);
+			}
+
+
+			PublicDependencyModuleNames.AddRange(
+				new string[]
+				{
+					"Core",
+				}
+			);
+			
+			PrivateDependencyModuleNames.AddRange(
+				new string[]
+				{
+					"CoreUObject",
+					"Engine",
+					"libcurl", //link against these modules so GDAL can use them.
+					"SQLiteCore", //
+					"LibTiff",
+					"ZLib",
+				}
+			);
+
 		}
-        foreach (var  lib in dependencylibs)
+		else if (Target.Platform == UnrealTargetPlatform.Linux)
 		{
-			PublicAdditionalLibraries.Add(lib);
-        }
+			// This is for a dynamic/shared build of GDAL. (Whereas the Win64 branch above is for a static build of GDAL.)
 
+			string DynamicGDALLib = Path.Combine(ModuleDirectory, "lib", "libgdal.so");
+			PublicAdditionalLibraries.Add(DynamicGDALLib);
+			
+			string stagingDir = Path.Combine("$(ProjectDir)", "Binaries", "Data", "GDAL");
+			var datadirs = Directory.GetDirectories(Path.Combine(ModuleDirectory, "share"), "*"); 
 
-        PublicDependencyModuleNames.AddRange(
-			new string[]
+			if (!Directory.Exists(stagingDir))
 			{
-				"Core",
+				Directory.CreateDirectory(stagingDir);
 			}
-		);
-		
-		PrivateDependencyModuleNames.AddRange(
-			new string[]
+			foreach (string dir in datadirs)
 			{
-				"CoreUObject",
-				"Engine",
-				"libcurl", //link against these modules so GDAL can use them.
-				"SQLiteCore", //
-				"LibTiff",
-				"ZLib",
+				string StagedDataDir = Path.Combine(stagingDir, Path.GetFileName(dir));
+				// System.Console.WriteLine("StagedDataDir: " + StagedDataDir);
+
+				if (!Directory.Exists(StagedDataDir))
+				{
+					Directory.CreateDirectory(StagedDataDir);
+				}
+				foreach (string file in Directory.GetFiles(dir, "*"))
+				{
+					RuntimeDependencies.Add(Path.Combine(StagedDataDir, Path.GetFileName(file)), file, StagedFileType.NonUFS);
+				}
 			}
-		);
+
+			PublicIncludePaths.Add(Path.Combine(ModuleDirectory, "dependencies", "include"));
+
+			PublicDependencyModuleNames.AddRange(
+				new string[]
+				{
+					"Core",
+				}
+			);
+			
+			PrivateDependencyModuleNames.AddRange(
+				new string[]
+				{
+					"CoreUObject",
+					"Engine",
+					"PROJ",
+					"libcurl", //link against these modules so GDAL can use them.
+					"SQLiteCore",
+					"LibTiff",
+					"zlib",
+				}
+			);
+		}
+
 	}
 }

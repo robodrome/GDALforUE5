@@ -19,9 +19,9 @@
 			"Name": "UnrealGDAL",
 			"Type": "Runtime",
 			"LoadingPhase": "Default",
-			"WhitelistPlatforms": [ "Win64" ]
+			"WhitelistPlatforms": [ "Linux", "Win64" ]
 		}
-
+		
 	]
 
 }
