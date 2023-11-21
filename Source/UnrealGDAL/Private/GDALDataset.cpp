@@ -73,7 +73,8 @@ CPLErr UGDALDataset::AttemptLoadFromBuffer(TArray<uint8> Buffer, FString& Filena
 	{
 		Filename = "/vsimem/" + FGuid::NewGuid().ToString();
 	}
-	const char*	FilenameANSI = StringCast<ANSICHAR>(*Filename).Get();
+	auto FilenameANSIWhole = StringCast<ANSICHAR>(*Filename);
+	const char* FilenameANSI = FilenameANSIWhole.Get();
 	VSILFILE* Handle = VSIFileFromMemBuffer(FilenameANSI, Buffer.GetData(), Buffer.Num(), false);
 
 	if (Handle)

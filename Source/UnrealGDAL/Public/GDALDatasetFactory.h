@@ -3,6 +3,7 @@
 #pragma once
 
 #include "CoreMinimal.h"
+#include "Misc/FileHelper.h"
 #include "Factories/Factory.h"
 #include "GDALDatasetFactory.generated.h"
 
