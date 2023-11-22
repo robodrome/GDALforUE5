@@ -133,16 +133,23 @@ public class GDAL : ModuleRules
 				}
 			);
 			
+			// Go to UE5 root directory and use 'find . -iname "*.build.cs" | grep <blabla>' for these.
 			PrivateDependencyModuleNames.AddRange(
 				new string[]
 				{
 					"CoreUObject",
 					"Engine",
-					"PROJ",
-					"libcurl", //link against these modules so GDAL can use them.
+					"PROJ",  //link against these modules so GDAL can use them.
+					"libcurl",
 					"SQLiteCore",
 					"LibTiff",
 					"zlib",
+					"UElibPNG",
+					"LibJpegTurbo",
+					"Expat",
+					"libxml2",
+					"OpenSSL",
+					"nghttp2"
 				}
 			);
 		}
