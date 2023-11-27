@@ -88,7 +88,7 @@ public class GDAL : ModuleRules
 					"CoreUObject",
 					"Engine",
 					"libcurl", //link against these modules so GDAL can use them.
-					"SQLiteCore", //
+					"SQLiteCore",
 					"LibTiff",
 					"ZLib",
 				}
@@ -113,7 +113,6 @@ public class GDAL : ModuleRules
 			{
 				string StagedDataDir = Path.Combine(stagingDir, Path.GetFileName(dir));
 				// System.Console.WriteLine("StagedDataDir: " + StagedDataDir);
-
 				if (!Directory.Exists(StagedDataDir))
 				{
 					Directory.CreateDirectory(StagedDataDir);
@@ -139,7 +138,7 @@ public class GDAL : ModuleRules
 				{
 					"CoreUObject",
 					"Engine",
-					"PROJ",  //link against these modules so GDAL can use them.
+					"PROJ", //link against these modules so GDAL can use them.
 					"libcurl",
 					"SQLiteCore",
 					"LibTiff",
