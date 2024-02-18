@@ -1,8 +1,8 @@
-CONFIG_VERSION=3.8.0dev
-CONFIG_INST_PREFIX=C:/Users/Soren/Documents/GDAL/gdalinstall
-CONFIG_INST_LIBS=-LIBPATH:C:/Users/Soren/Documents/GDAL/gdalinstall/lib gdal wbemuuid ws2_32 C:/OSGeo4W/lib/sqlite3_i.lib C:/OSGeo4W/lib/geos_c.lib psapi C:/OSGeo4W/lib/proj.lib
-CONFIG_INST_CFLAGS=-IC:/Users/Soren/Documents/GDAL/gdalinstall/include
-CONFIG_INST_DATA=C:/Users/Soren/Documents/GDAL/gdalinstall/share/gdal
+CONFIG_VERSION=3.8.4
+CONFIG_INST_PREFIX=/home/david/Documents/Unreal Projects/MySim/Plugins/GDALforUE5/Source/GDAL
+CONFIG_INST_LIBS="-L/home/david/Documents/Unreal Projects/MySim/Plugins/GDALforUE5/Source/GDAL/lib" -lgdal
+CONFIG_INST_CFLAGS="-I/home/david/Documents/Unreal Projects/MySim/Plugins/GDALforUE5/Source/GDAL/include"
+CONFIG_INST_DATA="/home/david/Documents/Unreal Projects/MySim/Plugins/GDALforUE5/Source/GDAL/share/gdal"
 prefix=${CONFIG_INST_PREFIX}
 exec_prefix=${prefix}
 libdir=${exec_prefix}/lib
@@ -13,5 +13,5 @@ Name: libgdal
 Description: Geospatial Data Abstraction Library
 Version: ${CONFIG_VERSION}
 Libs: ${CONFIG_INST_LIBS}
-Libs.private: 
+Libs.private: -ldl -lodbcinst -lssl -lcrypto -llzma -ldeflate -llz4 -larmadillo -L/usr/local/cuda/lib64 -lOpenCL -lqhull_r -lgeotiff -ltiff -lheif -lzstd -laec -ljpeg -lpoppler -lpng -lgif -lnetcdf -lblosc -lcfitsio -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lwebp -ldfalt -lmfhdfalt -lopenjp2 -lIlmImf -lIlmImfUtil -lHalf -lIex -lkmlbase -lkmldom -lkmlengine -lminizip -luriparser -lz -lfyba -lfygm -lfyut -lpcre2-8 -lspatialite -lsqlite3 -lxerces-c -lmysqlclient -lpq -lodbc -lfreexl -logdi -lexpat -lxml2 -lgeos_c -lcurl -lproj -ljson-c -lstdc++ -lm
 Cflags: ${CONFIG_INST_CFLAGS}

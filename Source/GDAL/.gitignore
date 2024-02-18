@@ -1,8 +1,8 @@
-# Conan generated files
-conan.lock
-conanbuildinfo.*
-conaninfo.*
-graph_info.*
+# Compiled source
+bin/*
+include/*
+lib/*
+share/*
 
-# Precomputed dependency data
-precomputed/
+# keep these
+!dependencies/

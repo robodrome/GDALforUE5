@@ -8,7 +8,7 @@
 #ifndef GDAL_VERSION_MAJOR
 #  define GDAL_VERSION_MAJOR    3
 #  define GDAL_VERSION_MINOR    8
-#  define GDAL_VERSION_REV      0
+#  define GDAL_VERSION_REV      4
 #  define GDAL_VERSION_BUILD    0
 #endif
 
@@ -25,9 +25,9 @@
 
 #if !defined(DO_NOT_DEFINE_GDAL_DATE_NAME)
 #ifndef GDAL_RELEASE_DATE
-#  define GDAL_RELEASE_DATE     20239999
+#  define GDAL_RELEASE_DATE     20240208
 #endif
 #ifndef GDAL_RELEASE_NAME
-#  define GDAL_RELEASE_NAME     "3.8.0dev"
+#  define GDAL_RELEASE_NAME     "3.8.4"
 #endif
 #endif

@@ -1,13 +1,13 @@
 #!/bin/sh
-CONFIG_LIBS="-LIBPATH:C:/Users/Soren/Documents/GDAL/gdalinstall/lib gdal wbemuuid ws2_32 C:/OSGeo4W/lib/sqlite3_i.lib C:/OSGeo4W/lib/geos_c.lib psapi C:/OSGeo4W/lib/proj.lib"
-CONFIG_DEP_LIBS=""
-CONFIG_PREFIX="C:/Users/Soren/Documents/GDAL/gdalinstall"
-CONFIG_CFLAGS="-IC:/Users/Soren/Documents/GDAL/gdalinstall/include"
-CONFIG_DATA="C:/Users/Soren/Documents/GDAL/gdalinstall/share/gdal"
-CONFIG_VERSION="3.8.0dev"
+CONFIG_LIBS=""-L/home/david/Documents/Unreal Projects/MySim/Plugins/GDALforUE5/Source/GDAL/lib" -lgdal"
+CONFIG_DEP_LIBS="-ldl -lodbcinst -lssl -lcrypto -llzma -ldeflate -llz4 -larmadillo -L/usr/local/cuda/lib64 -lOpenCL -lqhull_r -lgeotiff -ltiff -lheif -lzstd -laec -ljpeg -lpoppler -lpng -lgif -lnetcdf -lblosc -lcfitsio -L/usr/lib/x86_64-linux-gnu/hdf5/serial -lhdf5 -lwebp -ldfalt -lmfhdfalt -lopenjp2 -lIlmImf -lIlmImfUtil -lHalf -lIex -lkmlbase -lkmldom -lkmlengine -lminizip -luriparser -lz -lfyba -lfygm -lfyut -lpcre2-8 -lspatialite -lsqlite3 -lxerces-c -lmysqlclient -lpq -lodbc -lfreexl -logdi -lexpat -lxml2 -lgeos_c -lcurl -lproj -ljson-c -lstdc++ -lm"
+CONFIG_PREFIX=""/home/david/Documents/Unreal Projects/MySim/Plugins/GDALforUE5/Source/GDAL""
+CONFIG_CFLAGS=""-I/home/david/Documents/Unreal Projects/MySim/Plugins/GDALforUE5/Source/GDAL/include""
+CONFIG_DATA=""/home/david/Documents/Unreal Projects/MySim/Plugins/GDALforUE5/Source/GDAL/share/gdal""
+CONFIG_VERSION="3.8.4"
 CONFIG_GNM_ENABLED=yes
-CONFIG_FORMATS="JPEG raw GTIFF MEM vrt Derived HFA SDTS NITF GXF AAIGrid CEOS SAR_CEOS XPM DTED JDEM Envisat ELAS FIT L1B RS2 ILWIS RMF Leveller SGI SRTMHGT IDRISI GSG ERS PALSARJaxa DIMAP GFF COSAR PDS ADRG COASP TSX Terragen BLX MSGN TIL R northwood SAGA XYZ ESRIC HF2 KMLSUPEROVERLAY CTG ZMap NGSGEOID IRIS MAP CALS SAFE SENTINEL2 PRF MRF WMTS GRIB BMP TGA STACTA BSB AIGrid ARG USGSDEM AirSAR OZI PCIDSK SIGDEM RIK STACIT PDF PNG GIF netCDF Zarr Rasterlite PCRaster MEM geojson TAB Shape KML VRT AVC GML CSV DGN GMT NTF S57 Tiger Geoconcept GeoRSS DXF PGDump GPSBabel EDIGEO SXF OpenFileGDB WAsP Selafin JML VDV FlatGeobuf MapML JSONFG SDTS Idrisi PDS SQLite GeoPackage OSM VFK CAD GTFS"
-CONFIG_PLUGINDIR="C:/Users/Soren/Documents/GDAL/gdalinstall/lib/gdalplugins"
+CONFIG_FORMATS="JPEG raw GTIFF MEM vrt Derived HFA SDTS NITF GXF AAIGrid CEOS SAR_CEOS XPM DTED JDEM Envisat ELAS FIT L1B RS2 ILWIS RMF Leveller SGI SRTMHGT IDRISI GSG ERS PALSARJaxa DIMAP GFF COSAR PDS ADRG COASP TSX Terragen BLX MSGN TIL R northwood SAGA XYZ HEIF ESRIC HF2 KMLSUPEROVERLAY CTG ZMap NGSGEOID IRIS MAP CALS SAFE SENTINEL2 PRF MRF WMTS GRIB BMP TGA STACTA BSB AIGrid ARG USGSDEM AirSAR OZI PCIDSK SIGDEM RIK STACIT PDF PNG GIF WCS HTTP netCDF Zarr DAAS EEDA FITS HDF5 PLMOSAIC WMS OGCAPI WEBP HDF4 Rasterlite MBTiles PostGISRaster JP2OpenJPEG EXR PCRaster MEM geojson TAB Shape KML VRT AVC GML CSV DGN GMT NTF S57 Tiger Geoconcept GeoRSS DXF PGDump GPSBabel EDIGEO SXF OpenFileGDB WAsP Selafin JML VDV FlatGeobuf MapML JSONFG SDTS GPX GMLAS SVG CSW LIBKML NAS PLSCENES SOSI WFS NGW Elastic Idrisi PDS SQLite GeoPackage OSM VFK MVT PMTiles AmigoCloud Carto ILI MySQL PG MSSQLSpatial ODBC PGeo XLSX XLS CAD GTFS ODS OGDI LVBAG"
+CONFIG_PLUGINDIR=""/home/david/Documents/Unreal Projects/MySim/Plugins/GDALforUE5/Source/GDAL/lib/gdalplugins""
 usage()
 
 {

@@ -10,13 +10,13 @@
 #endif
 
 /* --prefix directory for GDAL install */
-#define GDAL_PREFIX "C:/Users/Soren/Documents/GDAL/gdalinstall"
+#define GDAL_PREFIX "/home/david/Documents/Unreal Projects/MySim/Plugins/GDALforUE5/Source/GDAL"
 
 /* The size of `int', as computed by sizeof. */
 #define SIZEOF_INT 4
 
 /* The size of `unsigned long', as computed by sizeof. */
-#define SIZEOF_UNSIGNED_LONG 4
+#define SIZEOF_UNSIGNED_LONG 8
 
 /* The size of `void*', as computed by sizeof. */
 #define SIZEOF_VOIDP 8
@@ -28,20 +28,20 @@
 /* #undef VSI_NEED_LARGEFILE64_SOURCE */
 
 /* Define to 1 if you want to use the -fvisibility GCC flag */
-/* #undef USE_GCC_VISIBILITY_FLAG */
+#define USE_GCC_VISIBILITY_FLAG 1
 
 /* Define to 1 if GCC atomic builtins are available */
-/* #undef HAVE_GCC_ATOMIC_BUILTINS */
+#define HAVE_GCC_ATOMIC_BUILTINS 1
 
 /* Define to 1 if GCC bswap builtins are available */
-/* #undef HAVE_GCC_BSWAP */
+#define HAVE_GCC_BSWAP 1
 
 /* Define to 1 if your processor stores words with the most significant byte
    first (like Motorola and SPARC, unlike Intel and VAX). */
 /* #undef WORDS_BIGENDIAN */
 
 /* Define to name of 64bit stat structure */
-#define VSI_STAT64_T __stat64
+#define VSI_STAT64_T stat64
 
 /* Define to 1 if you have the `std::isnan' function. */
 #define HAVE_STD_IS_NAN 1
@@ -50,34 +50,40 @@
 #ifdef GDAL_COMPILATION
 
 /* The size of `long int', as computed by sizeof. */
-#define SIZEOF_LONG_INT 4
+#define SIZEOF_LONG_INT 8
 
 /* Define if you want to use pthreads based multiprocessing support */
-/* #undef CPL_MULTIPROC_PTHREAD */
+#define CPL_MULTIPROC_PTHREAD 1
 
 /* Define to 1 if you have the `PTHREAD_MUTEX_RECURSIVE' constant. */
-/* #undef HAVE_PTHREAD_MUTEX_RECURSIVE */
+#define HAVE_PTHREAD_MUTEX_RECURSIVE 1
 
 /* Define to 1 if you have the `PTHREAD_MUTEX_ADAPTIVE_NP' constant. */
-/* #undef HAVE_PTHREAD_MUTEX_ADAPTIVE_NP */
+#define HAVE_PTHREAD_MUTEX_ADAPTIVE_NP 1
 
 /* Define to 1 if you have the `pthread_spin_lock' function. */
-/* #undef HAVE_PTHREAD_SPIN_LOCK */
+#define HAVE_PTHREAD_SPIN_LOCK 1
 
 /* Define to 1 if you have the `pthread_atfork' function. */
-/* #undef HAVE_PTHREAD_ATFORK */
+#define HAVE_PTHREAD_ATFORK 1
 
 /* Define to 1 if you have the 5 args `mremap' function. */
-/* #undef HAVE_5ARGS_MREMAP */
+#define HAVE_5ARGS_MREMAP 1
+
+/* Define to 1 if you have the <sys/random.h> header file. */
+#define HAVE_SYS_RANDOM_H 1
+
+/* Define to 1 if you have the `getrandom' function. */
+#define HAVE_GETRANDOM 1
 
 /* Define to 1 if you have the `getrlimit' function. */
-/* #undef HAVE_GETRLIMIT */
+#define HAVE_GETRLIMIT 1
 
 /* Define to 1 if you have the `RLIMIT_AS' constant. */
-/* #undef HAVE_RLIMIT_AS */
+#define HAVE_RLIMIT_AS 1
 
 /* Define to 1 if you have the <direct.h> header file. */
-#define HAVE_DIRECT_H 1
+/* #undef HAVE_DIRECT_H */
 
 /* Define to 1 if you have the <dlfcn.h> header file. */
 #define HAVE_DLFCN_H 1
@@ -89,22 +95,22 @@
 #define HAVE_GETCWD 1
 
 /* Define if you have the iconv() function and it works. */
-/* #undef HAVE_ICONV */
+#define HAVE_ICONV 1
 
 /* Define to 1 if the system has the type `__uint128_t'. */
-/* #undef HAVE_UINT128_T */
+#define HAVE_UINT128_T 1
 
 /* Define to 1 if you have the <locale.h> header file. */
 #define HAVE_LOCALE_H 1
 
 /* Define to 1 if you have the <sys/stat.h> header file. */
-/* #undef HAVE_SYS_STAT_H */
+#define HAVE_SYS_STAT_H 1
 
 /* Define to 1 if you have the <sys/types.h> header file. */
 #define HAVE_SYS_TYPES_H 1
 
 /* Define to 1 if you have the <unistd.h> header file. */
-/* #undef HAVE_UNISTD_H */
+#define HAVE_UNISTD_H 1
 
 /* Define to 1 if you have the <xlocale.h> header file. */
 /* #undef HAVE_XLOCALE_H */
@@ -113,31 +119,31 @@
 #define HAVE_VSNPRINTF 1
 
 /* Define to 1 if you have the `readlink' function. */
-/* #undef HAVE_READLINK */
+#define HAVE_READLINK 1
 
 /* Define to 1 if you have the `posix_spawnp' function. */
-/* #undef HAVE_POSIX_SPAWNP */
+#define HAVE_POSIX_SPAWNP 1
 
 /* Define to 1 if you have the `posix_memalign' function. */
-/* #undef HAVE_POSIX_MEMALIGN */
+#define HAVE_POSIX_MEMALIGN 1
 
 /* Define to 1 if you have the `vfork' function. */
-/* #undef HAVE_VFORK */
+#define HAVE_VFORK 1
 
 /* Define to 1 if you have the `mmap' function. */
-/* #undef HAVE_MMAP */
+#define HAVE_MMAP 1
 
 /* Define to 1 if you have the `sigaction' function. */
-/* #undef HAVE_SIGACTION */
+#define HAVE_SIGACTION 1
 
 /* Define to 1 if you have the `statvfs' function. */
-/* #undef HAVE_STATVFS */
+#define HAVE_STATVFS 1
 
 /* Define to 1 if you have the `statvfs64' function. */
-/* #undef HAVE_STATVFS64 */
+#define HAVE_STATVFS64 1
 
 /* Define to 1 if you have the `lstat' function. */
-/* #undef HAVE_LSTAT */
+#define HAVE_LSTAT 1
 
 /* For .cpp files, define as const if the declaration of iconv() needs const. */
 #define ICONV_CPP_CONST 
@@ -146,22 +152,22 @@
 /* #undef MACOSX_FRAMEWORK */
 
 /* Define to 1 if you have fseek64, ftell64 */
-/* #undef UNIX_STDIO_64 */
+#define UNIX_STDIO_64 1
 
 /* Define to name of 64bit fopen function */
-/* #undef VSI_FOPEN64 */
+#define VSI_FOPEN64 fopen64
 
 /* Define to name of 64bit ftruncate function */
-/* #undef VSI_FTRUNCATE64 */
+#define VSI_FTRUNCATE64 ftruncate64
 
 /* Define to name of 64bit fseek func */
-/* #undef VSI_FSEEK64 */
+#define VSI_FSEEK64 fseeko64
 
 /* Define to name of 64bit ftell func */
-/* #undef VSI_FTELL64 */
+#define VSI_FTELL64 ftello64
 
 /* Define to name of 64bit stat function */
-#define VSI_STAT64 _stat64
+#define VSI_STAT64 stat64
 
 /* Use this file to override settings in instances where you're doing FAT compiles
    on Apple.  It is currently off by default because it doesn't seem to work with
@@ -170,27 +176,36 @@
 
 
 /* Define to 1 if you have the _SC_PHYS_PAGES' constant. */
-/* #undef HAVE_SC_PHYS_PAGES */
+#define HAVE_SC_PHYS_PAGES 1
 
 /* Define to 1 if you have the `sched_getaffinity' function. */
-/* #undef HAVE_SCHED_GETAFFINITY */
+#define HAVE_SCHED_GETAFFINITY 1
 
 /* Define to 1 if you have the `uselocale' function. */
-/* #undef HAVE_USELOCALE */
+#define HAVE_USELOCALE 1
 
 /* Define to 1 if libc don't deprecate sprintf */
 #ifndef DONT_DEPRECATE_SPRINTF
-/* #undef DONT_DEPRECATE_SPRINTF */
+#define DONT_DEPRECATE_SPRINTF 0
 #endif
 
 /* Define to 1 if the compiler supports -Wzero-as-null-pointer-constant */
-/* #undef HAVE_GCC_WARNING_ZERO_AS_NULL_POINTER_CONSTANT */
+#define HAVE_GCC_WARNING_ZERO_AS_NULL_POINTER_CONSTANT 1
 
 /* Define if building a static windows lib */
-#define CPL_DISABLE_DLL 1
+/* #undef CPL_DISABLE_DLL */
 
 /* Define to 1 if you have the <atlbase.h> header file. */
-#define HAVE_ATLBASE_H 1
+/* #undef HAVE_ATLBASE_H */
+
+/* Define to 1 if you have the `ctime_r' function. */
+#define HAVE_CTIME_R 1
+
+/* Define to 1 if you have the `localtime_r' function. */
+#define HAVE_LOCALTIME_R 1
+
+/* Define to 1 if you have the `gmtime_r' function. */
+#define HAVE_GMTIME_R 1
 
 #endif /* GDAL_COMPILATION */
 
